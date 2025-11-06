@@ -1,7 +1,9 @@
 import "./MainPage.css"
-import type { Email } from "../Types/Email";
+import type { Email } from "../../Types/Email";
 import { IoReload } from "react-icons/io5";
-import ListBoxEmails from "../Components/ListBoxEmails";
+import ListBoxEmails from "../../Components/ListBoxEmails/ListBoxEmails";
+import { useNavigate } from "react-router-dom";
+import { MdOutlineDarkMode } from "react-icons/md";
 
 export const emailsMock: Email[] = [
   {
@@ -107,6 +109,7 @@ export const emailsMock: Email[] = [
 ];
 
 function MainPage () {
+  const navigate = useNavigate();
 
   return (
     <div className="container">
@@ -115,11 +118,11 @@ function MainPage () {
           <span className="optionPage">Início</span>
         </div>
 
-        <div className="buttonChangePage">
+        <div className="buttonChangePage" onClick={() => navigate('emailsbycategory')}>
           <span className="optionPage">E-mails por Categoria</span>
         </div>
 
-        {/* Botão de trocar tema */}
+        <MdOutlineDarkMode size={24} style={{marginLeft:'auto', marginRight:'20px'}}  />
       </div>
       <div style={{width:'100%', height:'1px', backgroundColor:'rgba(0, 0, 0, 0.08)'}} />
       <div className="emailsField">

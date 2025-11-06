@@ -1,0 +1,75 @@
+.filters {
+  display: flex;
+  align-items: center;
+  flex-direction: row;
+  width: 100%;
+  gap: 1rem;
+}
+
+.filtersCard {
+  display: flex;
+  flex-direction: row;
+  gap: 1rem;
+  font-size: small;
+  font-weight: 500;
+}
+
+.filterCard {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 5px;
+  padding-top: 0.25rem;
+  padding-bottom: 0.25rem;
+  padding-left: 0.5rem;
+  padding-right: 0.5rem;
+  background-color: #E5E6E7;
+  user-select: none;
+}
+
+.filterCard:hover {
+  cursor: pointer;
+}
+
+.filterCard:active {
+  transform: scale(0.9);
+}
+
+.ativado {
+  color: #1A73E8;
+  background-color: #D8E0E5;
+}
+
+.searchBar {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  background: #ffffff;
+  border: 1px solid #d1d5db;
+  border-radius: 10px;
+  padding: 8px 12px;
+  width: 320px;
+  transition: all 0.2s ease;
+  box-shadow: 0 1px 2px rgba(0,0,0,0.05);
+}
+
+.searchBar:hover {
+  box-shadow: 0 2px 6px rgba(0,0,0,0.1);
+}
+
+.searchIcon {
+  color: #6b7280;
+}
+
+.searchInput {
+  flex: 1;
+  border: none;
+  background: transparent;
+  outline: none;
+  font-size: 15px;
+  color: #111827;
+}
+
+.searchInput::placeholder {
+  color: #9ca3af;
+}

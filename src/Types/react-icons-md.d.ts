@@ -1,4 +1,4 @@
-declare module "react-icons/io5" {
+declare module "react-icons/md" {
   import type { ComponentType, SVGProps } from "react";
 
   export interface IconProps extends SVGProps<SVGSVGElement> {
@@ -7,6 +7,5 @@ declare module "react-icons/io5" {
     title?: string;
   }
 
-  export const IoReload: ComponentType<IconProps>;
-  export const IoSearch: ComponentType<IconProps>;
+  export const MdOutlineDarkMode: ComponentType<IconProps>;
 }

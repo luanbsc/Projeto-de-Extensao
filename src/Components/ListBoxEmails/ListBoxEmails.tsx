@@ -1,5 +1,5 @@
 import "./ListBoxEmails.css"
-import type { Email } from "../Types/Email";
+import type { Email } from "../../Types/Email";
 
 interface EmailListProps {
   emails: Email[];
