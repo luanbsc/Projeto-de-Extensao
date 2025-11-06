@@ -57,9 +57,6 @@
   border-color: transparent;
   background-color: rgb(19, 127, 236);
   color: white;
-}
-
-.reloadButton:hover {
   cursor: pointer;
 }
 

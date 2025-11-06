@@ -2,7 +2,7 @@
   display: flex;
   align-items: center;
   flex-direction: row;
-  width: 100%;
+  width: 1200px;
   gap: 1rem;
 }
 
@@ -25,9 +25,6 @@
   padding-right: 0.5rem;
   background-color: #E5E6E7;
   user-select: none;
-}
-
-.filterCard:hover {
   cursor: pointer;
 }
 
@@ -72,4 +69,11 @@
 
 .searchInput::placeholder {
   color: #9ca3af;
+}
+
+.emailsByCategoryField {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 2rem;
 }
