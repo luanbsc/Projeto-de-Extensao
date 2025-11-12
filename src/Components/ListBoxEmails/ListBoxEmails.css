@@ -42,3 +42,29 @@
   font-size: 1rem;
   margin-right: 1rem;
 }
+
+.buttonsPage {
+  display: flex;
+  justify-content: center;
+  gap: 1rem;
+}
+
+.buttonsPage button {
+  width: 40px;
+  height: 40px;
+  border: none;
+  border-radius: 8px;
+  padding: 0.5rem;
+  padding-left: 0.75rem;
+  padding-right: 0.75rem;
+  cursor: pointer;
+}
+
+.buttonsPage button:active {
+  transform: scale(0.9);
+}
+
+.selected {
+  color: white;
+  background-color: rgb(19, 127, 236);
+}

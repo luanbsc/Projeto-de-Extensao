@@ -4,6 +4,7 @@ import { IoReload } from "react-icons/io5";
 import ListBoxEmails from "../../Components/ListBoxEmails/ListBoxEmails";
 import { useNavigate } from "react-router-dom";
 import { MdOutlineDarkMode } from "react-icons/md";
+import { useState } from "react";
 
 export const emailsMock: Email[] = [
   {
@@ -111,6 +112,8 @@ export const emailsMock: Email[] = [
 function MainPage () {
   const navigate = useNavigate();
 
+  const [page, setPage] = useState<number>(1)
+
   return (
     <div className="container">
       <div className="pagesAndOptions">
@@ -134,7 +137,7 @@ function MainPage () {
           </button>
         </div>
 
-        <ListBoxEmails emails={emailsMock} />
+        <ListBoxEmails emails={emailsMock} page={page} setPage={setPage} />
       </div>
     </div>
   )

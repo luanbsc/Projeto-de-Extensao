@@ -8,4 +8,6 @@ declare module "react-icons/md" {
   }
 
   export const MdOutlineDarkMode: ComponentType<IconProps>;
+  export const MdNavigateNext: ComponentType<IconProps>;
+  export const MdNavigateBefore: ComponentType<IconProps>;
 }

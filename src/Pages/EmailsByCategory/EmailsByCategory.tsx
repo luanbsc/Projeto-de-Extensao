@@ -115,6 +115,7 @@ function EmailsByCategory () {
   const [iniciacaoCientificaIsActive, setIniciacaoCientificaIsActive] = useState<boolean>(false)
   const [assuntosGeraisIsActive, setAssuntosGeraisIsActive] = useState<boolean>(false);
   const [projetosIsActive, setProjetosIsActive] = useState<boolean>(false);
+  const [page, setPage] = useState<number>(1);
 
   const handleClickFilterTodos = () => {
     if (!todosIsActive) {
@@ -198,7 +199,7 @@ function EmailsByCategory () {
           </div>
         </div>
 
-        <ListBoxEmails emails={emailsMock} />
+        <ListBoxEmails emails={emailsMock} page={page} setPage={setPage} />
       </div>
     </div>
   )
