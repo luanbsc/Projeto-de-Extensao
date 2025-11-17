@@ -60,6 +60,13 @@
   cursor: pointer;
 }
 
+.firstPage, .lastPage {
+  width: auto;
+  min-width: 60px;
+  padding-left: 0.5rem;
+  padding-right: 0.5rem;
+}
+
 .buttonsPage button:active {
   transform: scale(0.9);
 }

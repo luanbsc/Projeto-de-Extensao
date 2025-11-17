@@ -7,11 +7,12 @@
 }
 
 .filtersCard {
-  display: flex;
-  flex-direction: row;
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
   gap: 1rem;
   font-size: small;
   font-weight: 500;
+  max-width: 1000px;
 }
 
 .filterCard {

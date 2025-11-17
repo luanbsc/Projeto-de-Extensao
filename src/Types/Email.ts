@@ -1,10 +1,10 @@
 export interface Email {
   id: string;
-  remetente: string;
-  destinatario: string;
-  assunto: string;
-  mensagem: string;
-  data: string;
-  lido: boolean;
-  categoria?: string;
+  body: string;
+  subject: string;
+  date: string;
+  category?: string;
+  inserted_at?: string;
+  updated_at?: string;
+  deleted_at?: string;
 }
