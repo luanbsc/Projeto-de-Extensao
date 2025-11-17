@@ -14,7 +14,7 @@ function EmailDetail() {
   useEffect(() => {
     async function fetchEmail() {
       try {
-        const response = await fetch(`https://inboxstream-api.onrender.com/api/v1/emails/${id}`);
+        const response = await fetch(`/api/v1/emails/${id}`);
         if (!response.ok) {
           throw new Error('Email não encontrado');
         }

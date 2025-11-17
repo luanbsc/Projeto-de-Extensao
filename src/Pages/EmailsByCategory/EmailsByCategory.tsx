@@ -30,7 +30,7 @@ function EmailsByCategory () {
 
   useEffect(() => {
     async function fetchEmails() {
-      let url = `https://inboxstream-api.onrender.com/api/v1/emails?order=desc&limit=10&offset=${(page-1)*10}`;
+      let url = `/api/v1/emails?order=desc&limit=10&offset=${(page-1)*10}`;
       if (selectedCategories.length > 0) {
         url += `&category=${selectedCategories.join(',')}`;
       }
