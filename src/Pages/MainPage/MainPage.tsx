@@ -15,7 +15,8 @@ function MainPage () {
 
   useEffect(() => {
     async function fetchEmails() {
-      const response = await fetch(`/api/v1/emails?order=desc&limit=10&offset=${(page-1)*10}`);
+      const apiBase = import.meta.env.DEV ? '' : import.meta.env.VITE_API_URL;
+      const response = await fetch(`${apiBase}/api/v1/emails?order=desc&limit=10&offset=${(page-1)*10}`);
       const data = await response.json();
       console.log(data);
       setEmails(data[0]);

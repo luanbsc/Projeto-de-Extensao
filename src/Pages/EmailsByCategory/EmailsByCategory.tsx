@@ -30,7 +30,8 @@ function EmailsByCategory () {
 
   useEffect(() => {
     async function fetchEmails() {
-      let url = `/api/v1/emails?order=desc&limit=10&offset=${(page-1)*10}`;
+      const apiBase = import.meta.env.DEV ? '' : import.meta.env.VITE_API_URL;
+      let url = `${apiBase}/api/v1/emails?order=desc&limit=10&offset=${(page-1)*10}`;
       if (selectedCategories.length > 0) {
         url += `&category=${selectedCategories.join(',')}`;
       }

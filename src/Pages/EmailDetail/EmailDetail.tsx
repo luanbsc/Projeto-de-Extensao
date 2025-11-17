@@ -14,7 +14,8 @@ function EmailDetail() {
   useEffect(() => {
     async function fetchEmail() {
       try {
-        const response = await fetch(`/api/v1/emails/${id}`);
+        const apiBase = import.meta.env.DEV ? '' : import.meta.env.VITE_API_URL;
+        const response = await fetch(`${apiBase}/api/v1/emails/${id}`);
         if (!response.ok) {
           throw new Error('Email não encontrado');
         }
