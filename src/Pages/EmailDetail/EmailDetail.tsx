@@ -1,46 +1,57 @@
 import "./EmailDetail.css"
-import { useNavigate, useParams, useLocation } from "react-router-dom";
+import { useNavigate, useParams } from "react-router-dom";
 import { MdOutlineDarkMode } from "react-icons/md";
-import { emailsMock } from "../MainPage/MainPage";
+import { useState, useEffect } from "react";
+import type { Email } from "../../Types/Email";
 
 function EmailDetail() {
   const navigate = useNavigate();
-  const location = useLocation();
   const { id } = useParams<{ id: string }>();
+  const [email, setEmail] = useState<Email | null>(null);
+  const [loading, setLoading] = useState(true);
+  const [error, setError] = useState<string | null>(null);
+
+  useEffect(() => {
+    async function fetchEmail() {
+      try {
+        const response = await fetch(`http://127.0.0.1:8000/api/v1/emails/${id}`);
+        if (!response.ok) {
+          throw new Error('Email não encontrado');
+        }
+        const data = await response.json();
+        setEmail(data);
+      } catch (err) {
+        setError(err instanceof Error ? err.message : 'Erro ao carregar email');
+      } finally {
+        setLoading(false);
+      }
+    }
+
+    if (id) {
+      fetchEmail();
+    }
+  }, [id]);
   
-  const email = emailsMock.find(e => e.id === id);
-  
-  if (!email) {
+  if (loading) {
     return (
       <div className="container">
         <div className="emailDetailField">
-          <p>Email não encontrado</p>
-          <button onClick={() => navigate(-1)}>Voltar</button>
+          <p>Carregando...</p>
         </div>
       </div>
     );
   }
 
-  const currentIndex = emailsMock.findIndex(e => e.id === id);
-  const hasPrevious = currentIndex > 0;
-  const hasNext = currentIndex < emailsMock.length - 1;
-
-  const handlePrevious = () => {
-    if (hasPrevious) {
-      navigate(`/email/${emailsMock[currentIndex - 1].id}`, { state: location.state });
-    }
-  };
-
-  const handleNext = () => {
-    if (hasNext) {
-      navigate(`/email/${emailsMock[currentIndex + 1].id}`, { state: location.state });
-    }
-  };
-
-  const getInitials = (email: string) => {
-    const name = email.split('@')[0];
-    return name.charAt(0).toUpperCase();
-  };
+  if (error || !email) {
+    return (
+      <div className="container">
+        <div className="emailDetailField">
+          <p>{error || 'Email não encontrado'}</p>
+          <button onClick={() => navigate(-1)}>Voltar</button>
+        </div>
+      </div>
+    );
+  }
 
   const formatDate = (dateString: string) => {
     const date = new Date(dateString);
@@ -87,9 +98,9 @@ function EmailDetail() {
       <div className="emailDetailField">
         <div className="emailCard">
           <div className="emailHeader">
-            <h1 className="emailSubject">{email.assunto}</h1>
+            <h1 className="emailSubject">{email.subject}</h1>
             <div className="senderInfo">
-              <div className="senderLeft">
+              {/* <div className="senderLeft">
                 <div className="avatar">
                   {getInitials(email.remetente)}
                 </div>
@@ -97,33 +108,16 @@ function EmailDetail() {
                   <p className="senderName">{email.remetente.split('@')[0]}</p>
                   <p className="senderEmail">&lt;{email.remetente}&gt;</p>
                 </div>
-              </div>
+              </div> */}
               <div className="emailDate">
-                <p>{formatDate(email.data)}</p>
+                <p>{formatDate(email.date)}</p>
               </div>
             </div>
           </div>
           
           <div className="emailBody">
-            <p>{email.mensagem}</p>
+            <p>{email.body}</p>
           </div>
-        </div>
-
-        <div className="navigationButtons">
-          <button 
-            className="navButton" 
-            onClick={handlePrevious}
-            disabled={!hasPrevious}
-          >
-            ← Anterior
-          </button>
-          <button 
-            className="navButton" 
-            onClick={handleNext}
-            disabled={!hasNext}
-          >
-            Próximo →
-          </button>
         </div>
       </div>
     </div>
