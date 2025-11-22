@@ -30,16 +30,25 @@ function EmailsByCategory () {
 
   useEffect(() => {
     async function fetchEmails() {
-      const apiBase = import.meta.env.DEV ? '' : import.meta.env.VITE_API_URL;
-      let url = `${apiBase}/api/v1/emails?order=desc&limit=10&offset=${(page-1)*10}`;
-      if (selectedCategories.length > 0) {
-        url += `&category=${selectedCategories.join(',')}`;
+      try {
+        const apiBase = import.meta.env.DEV ? '/api' : import.meta.env.VITE_API_URL;
+        let url = `${apiBase}/v1/emails?order=desc&limit=10&offset=${(page-1)*10}`;
+        if (selectedCategories.length > 0) {
+          url += `&category=${selectedCategories.join(',')}`;
+        }
+        console.log('Fetching:', url);
+        const response = await fetch(url);
+        console.log('Response status:', response.status, response.statusText);
+        if (!response.ok) throw new Error(`API error: ${response.status} ${response.statusText}`);
+        const data = await response.json();
+        console.log('Data:', data);
+        setEmails(data.items || []);
+        setTotal(data.total || 0);
+      } catch (error) {
+        console.error('Fetch error:', error);
+        setEmails([]);
+        setTotal(0);
       }
-      const response = await fetch(url);
-      const data = await response.json();
-      console.log(data);
-      setEmails(data[0]);
-      setTotal(data[1]);
     }
 
     fetchEmails();
