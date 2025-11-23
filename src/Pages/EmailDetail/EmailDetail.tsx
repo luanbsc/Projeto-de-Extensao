@@ -90,7 +90,7 @@ function EmailDetail() {
           <span className="logo">📧</span>
           <h1 className="appTitle">ColegiadoMail</h1>
         </div>
-        <div className="headerRight">
+        <div className="headerRight" onClick={() => navigate(0)}>
           <button className="iconButton">
             <span style={{fontSize: '20px'}}>↻</span>
           </button>

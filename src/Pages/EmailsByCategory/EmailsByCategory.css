@@ -3,7 +3,7 @@
   align-items: center;
   flex-direction: row;
   width: 1200px;
-  gap: 1rem;
+  gap: 4rem;
 }
 
 .filtersCard {
@@ -19,6 +19,7 @@
   display: flex;
   align-items: center;
   justify-content: center;
+  min-width: 290px;
   border-radius: 5px;
   padding-top: 0.25rem;
   padding-bottom: 0.25rem;

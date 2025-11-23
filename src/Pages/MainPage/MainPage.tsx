@@ -17,7 +17,7 @@ function MainPage () {
     async function fetchEmails() {
       try {
         const apiBase = import.meta.env.DEV ? '/api' : import.meta.env.VITE_API_URL;
-        const url = `${apiBase}/v1/emails?order=desc&limit=10&offset=${(page-1)*10}`;
+        const url = `${apiBase}/v1/emails?order=desc&limit=7&offset=${(page-1)*7}`;
         console.log('Fetching:', url);
         const response = await fetch(url);
         console.log('Response status:', response.status, response.statusText);
@@ -36,7 +36,7 @@ function MainPage () {
   }, [page]);
 
   return (
-    <div className="container">
+    <div className="container" style={{marginBottom:'1rem'}}>
       <div className="pagesAndOptions">
         <div className="buttonChangePageSelected">
           <span className="optionPage">Início</span>
@@ -48,11 +48,11 @@ function MainPage () {
 
         <MdOutlineDarkMode size={24} style={{marginLeft:'auto', marginRight:'20px'}}  />
       </div>
-      <div style={{width:'100%', height:'1px', backgroundColor:'rgba(0, 0, 0, 0.08)'}} />
+      <div style={{width:'100%', minHeight:'1px', backgroundColor:'rgba(0, 0, 0, 0.08)'}} />
       <div className="emailsField">
         <div style={{display:'flex', flexDirection:'row', width:'100%', alignItems:'center', justifyContent:'space-around'}}>
           <span className="title">E-mails Recentes</span>
-          <button className="reloadButton">
+          <button className="reloadButton" onClick={() => navigate(0)}>
             <IoReload size={20} />
             Recarregar
           </button>

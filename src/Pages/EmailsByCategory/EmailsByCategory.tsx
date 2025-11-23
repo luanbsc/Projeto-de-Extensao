@@ -95,8 +95,8 @@ function EmailsByCategory () {
         </div>
 
         <div className="filters">
+          <span style={{alignSelf:'flex-start', fontWeight:'500', fontSize:'small'}}>Categoria:</span>
           <div className="filtersCard">
-            <span style={{marginTop:'0.2rem'}}>Categoria:</span>
             {categories.map(category => (
               <div 
                 key={category}

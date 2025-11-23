@@ -1,4 +1,4 @@
-import "./ListBoxEmails.css"
+import "./ListBoxEmails.css";
 import type { Email } from "../../Types/Email";
 import { useNavigate } from "react-router-dom";
 import { MdNavigateNext, MdNavigateBefore } from "react-icons/md";
@@ -10,7 +10,7 @@ interface EmailListProps {
   total: number;
 }
 
-function ListBoxEmails ({ emails, page, setPage, total }: EmailListProps) {
+function ListBoxEmails({ emails, page, setPage, total }: EmailListProps) {
   const navigate = useNavigate();
 
   const totalPages = Math.ceil(total / 10);
@@ -19,40 +19,44 @@ function ListBoxEmails ({ emails, page, setPage, total }: EmailListProps) {
   const pageNumbers = Array.from({ length: endPage - startPage + 1 }, (_, i) => startPage + i);
 
   const handleClickPrevPage = () => {
-    if (page > 1) {
-      setPage(page - 1);
-    }
+    if (page > 1) setPage(page - 1);
   };
 
   const handleClickNextPage = () => {
-    if (page < totalPages) {
-      setPage(page + 1);
-    }
+    if (page < totalPages) setPage(page + 1);
   };
 
   const handleEmailClick = (emailId: string) => {
     navigate(`/email/${emailId}`);
   };
-  
+
   return (
     <>
       <div className="containerListBoxEmails">
         {emails.map((email, index) => (
-          <div 
-            className={`item ${index === emails.length - 1 && emails.length >= 10 ? 'itemSemBorda' : ''}`} 
+          <div
+            className={`item ${index === emails.length - 1 && emails.length >= 7 ? "itemSemBorda" : ""}`}
             key={email.id}
             onClick={() => handleEmailClick(email.id)}
-            style={{ cursor: 'pointer' }}
           >
-            <span className="emailTitle">{email.subject}</span>
-            <span className="emailDate">{new Date(email.date).toLocaleString('pt-BR', {
-              timeZone: 'America/Sao_Paulo',
-              hour12: false,
-              year: 'numeric',
-              month: '2-digit',
-              day: '2-digit',
-              hour: '2-digit',
-              minute: '2-digit'
+            <div className="emailInfo">
+              {/* Ícone estilizado */}
+              <div className="emailIcon">✉</div>
+
+              {/* Título */}
+              <span className="emailTitle">{email.subject}</span>
+            </div>
+
+            {/* Data formatada */}
+            <span className="emailDate">
+              {new Date(email.date).toLocaleString("pt-BR", {
+                timeZone: "America/Sao_Paulo",
+                hour12: false,
+                year: "numeric",
+                month: "2-digit",
+                day: "2-digit",
+                hour: "2-digit",
+                minute: "2-digit",
               })}
             </span>
           </div>
@@ -60,20 +64,34 @@ function ListBoxEmails ({ emails, page, setPage, total }: EmailListProps) {
       </div>
 
       <div className="buttonsPage">
-        <button className="previousPage" disabled={page === 1} onClick={() => handleClickPrevPage()}><MdNavigateBefore size={20} /></button>
-        {pageNumbers.map(pageNum => (
-          <button 
-            key={pageNum} 
-            className={`buttonPage ${page === pageNum ? "selected" : ""}`} 
+        <button
+          className="previousPage"
+          disabled={page === 1}
+          onClick={handleClickPrevPage}
+        >
+          <MdNavigateBefore size={20} />
+        </button>
+
+        {pageNumbers.map((pageNum) => (
+          <button
+            key={pageNum}
+            className={`buttonPage ${page === pageNum ? "selected" : ""}`}
             onClick={() => setPage(pageNum)}
           >
             {pageNum}
           </button>
         ))}
-        <button className="nextPage" disabled={page >= totalPages} onClick={() => handleClickNextPage()}><MdNavigateNext size={20} /></button>
+
+        <button
+          className="nextPage"
+          disabled={page >= totalPages}
+          onClick={handleClickNextPage}
+        >
+          <MdNavigateNext size={20} />
+        </button>
       </div>
     </>
-  )
+  );
 }
 
-export default ListBoxEmails
+export default ListBoxEmails;
