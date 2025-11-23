@@ -14,23 +14,24 @@ function EmailDetail() {
   useEffect(() => {
     async function fetchEmail() {
       try {
-        const apiBase = import.meta.env.DEV ? '' : import.meta.env.VITE_API_URL;
-        const response = await fetch(`${apiBase}/api/v1/emails/${id}`);
-        if (!response.ok) {
-          throw new Error('Email não encontrado');
-        }
+        const apiBase = import.meta.env.DEV ? '/api' : import.meta.env.VITE_API_URL;
+        const url = `${apiBase}/v1/emails/${id}`;
+        console.log('Fetching:', url);
+        const response = await fetch(url);
+        console.log('Response status:', response.status, response.statusText);
+        if (!response.ok) throw new Error(`API error: ${response.status} ${response.statusText}`);
         const data = await response.json();
+        console.log('Data:', data);
         setEmail(data);
-      } catch (err) {
-        setError(err instanceof Error ? err.message : 'Erro ao carregar email');
+      } catch (error) {
+        console.error('Fetch error:', error);
+        setError(error instanceof Error ? error.message : 'Erro ao carregar email');
       } finally {
         setLoading(false);
       }
     }
 
-    if (id) {
-      fetchEmail();
-    }
+    if (id) fetchEmail();
   }, [id]);
   
   if (loading) {
