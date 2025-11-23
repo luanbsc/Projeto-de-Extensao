@@ -27,12 +27,14 @@ function EmailsByCategory () {
   const [page, setPage] = useState<number>(1);
   const [emails, setEmails] = useState<Email[]>([]);
   const [total, setTotal] = useState<number>(0);
+  const [loading, setLoading] = useState<boolean>(false);
 
   useEffect(() => {
     async function fetchEmails() {
+      setLoading(true);
       try {
         const apiBase = import.meta.env.DEV ? '/api' : import.meta.env.VITE_API_URL;
-        let url = `${apiBase}/v1/emails?order=desc&limit=10&offset=${(page-1)*10}`;
+        let url = `${apiBase}/v1/emails?order=desc&limit=7&offset=${(page-1)*7}`;
         if (selectedCategories.length > 0) {
           url += `&category=${selectedCategories.join(',')}`;
         }
@@ -49,6 +51,8 @@ function EmailsByCategory () {
         setEmails([]);
         setTotal(0);
       }
+
+      setLoading(false);
     }
 
     fetchEmails();
@@ -109,7 +113,7 @@ function EmailsByCategory () {
           </div>
         </div>
 
-        <ListBoxEmails emails={emails} page={page} setPage={setPage} total={total} />
+        <ListBoxEmails emails={emails} page={page} setPage={setPage} total={total} loading={loading} />
       </div>
     </div>
   )

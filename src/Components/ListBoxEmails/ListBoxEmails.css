@@ -98,3 +98,45 @@
   color: white;
   background-color: rgb(19, 127, 236);
 }
+
+@keyframes shimmer {
+  0% {
+    background-position: -500px 0;
+  }
+  100% {
+    background-position: 500px 0;
+  }
+}
+
+.skeleton-box,
+.skeleton-text {
+  background: #eee;
+  background: linear-gradient(
+    to right,
+    #e9e9e9 0%,
+    #f5f5f5 20%,
+    #e9e9e9 40%,
+    #e9e9e9 100%
+  );
+  background-size: 1000px 100%;
+  animation: shimmer 1.8s infinite linear;
+  border-radius: 8px;
+}
+
+.skeleton-item {
+  pointer-events: none;
+}
+
+.skeleton-box {
+  width: 38px;
+  height: 38px;
+}
+
+.skeleton-text {
+  height: 16px;
+  width: 450px;
+}
+
+.skeleton-text.small {
+  width: 90px;
+}
