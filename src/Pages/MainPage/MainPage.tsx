@@ -40,7 +40,7 @@ function MainPage () {
       setLoading(false);
     }
     fetchEmails();
-  }, [page]);
+  }, [page, order, input]);
 
   return (
     <div className="container" style={{marginBottom:'1rem'}}>

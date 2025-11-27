@@ -62,7 +62,7 @@ function EmailsByCategory () {
     }
 
     fetchEmails();
-  }, [page, selectedCategories]);
+  }, [page, selectedCategories, order, input]);
 
   const handleCategoryClick = (category: string) => {
     if (category === "Todos") {
