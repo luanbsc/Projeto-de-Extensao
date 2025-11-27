@@ -1,14 +1,14 @@
 .containerListBoxEmails {
-  display: flex;
   flex-direction: column;
   width: 100%;
   max-width: 1200px;
-  height: 720px;
+  height: clamp(500px, 60vh, 720px);
   background: #ffffff;
   border-radius: 14px;
   overflow: hidden;
   box-shadow: 0 8px 28px rgba(0, 0, 0, 0.08);
   border: 1px solid rgba(0, 0, 0, 0.06);
+  user-select: none;
 }
 
 .item {
@@ -16,7 +16,7 @@
   align-items: center;
   justify-content: space-between;
   padding: 1rem 1.25rem;
-  min-height: 70px;
+  height: clamp(38px, 5.1vh, 70px);
   border-bottom: 1px solid rgba(0, 0, 0, 0.06);
   cursor: pointer;
   transition: background 0.2s ease, transform 0.15s ease;
@@ -70,6 +70,7 @@
   display: flex;
   justify-content: center;
   gap: 1rem;
+  user-select: none;
 }
 
 .buttonsPage button {
