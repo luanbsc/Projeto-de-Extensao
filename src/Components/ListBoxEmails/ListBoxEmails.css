@@ -35,7 +35,6 @@
 .item {
   display: flex;
   align-items: center;
-  justify-content: space-between;
   height: 7px;
   padding: 1rem 1.25rem;
   border-bottom: 1px solid rgba(0, 0, 0, 0.06);
@@ -67,7 +66,7 @@
 .emailInfo {
   display: flex;
   align-items: center;
-  max-width: 70%;
+  width: 70%;
   gap: 1rem;
 }
 
