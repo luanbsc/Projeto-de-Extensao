@@ -66,8 +66,14 @@
 .emailInfo {
   display: flex;
   align-items: center;
-  width: 70%;
+  width: 60%;
   gap: 1rem;
+}
+
+@media (min-width: 450px) {
+  .emailInfo {
+    width: 70%;
+  }
 }
 
 .emailIcon {
