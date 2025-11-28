@@ -52,7 +52,6 @@
 }
 
 .emailDetailField {
-  padding: 2rem;
   max-width: 1200px;
   display: flex;
   flex-direction: column;
