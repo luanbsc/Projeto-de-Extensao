@@ -60,7 +60,7 @@
   cursor: pointer;
 }
 
-@media (min-height: 600px) {
+@media (min-width: 450px) {
   .reloadButton {
     display: flex;
   }
