@@ -66,7 +66,7 @@ function ListBoxEmails({ emails, page, setPage, total, loading }: EmailListProps
               </div>
 
               {/* Data formatada */}
-              <span className="emailDate" style={{flex:"1", display:'flex', justifyContent:'end'}}>
+              <span className="emailDate" style={{display:'flex', justifyContent:'end'}}>
                 {new Date(email.date).toLocaleString("pt-BR", {
                   timeZone: "America/Sao_Paulo",
                   hour12: false,
