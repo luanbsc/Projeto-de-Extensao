@@ -48,7 +48,7 @@
 }
 
 .reloadButton {
-  display: flex;
+  display: none;
   align-items: center;
   gap: 0.5rem;
   width: 120px;
@@ -58,6 +58,12 @@
   background-color: rgb(19, 127, 236);
   color: white;
   cursor: pointer;
+}
+
+@media (min-height: 600px) {
+  .reloadButton {
+    display: flex;
+  }
 }
 
 .reloadButton:active {
