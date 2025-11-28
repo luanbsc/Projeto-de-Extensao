@@ -1,7 +1,8 @@
 .containerListBoxEmails {
   flex-direction: column;
-  width: 300px; /* celular pequeno */
-  height: auto;
+  max-width: 1200px;
+  width: 100%;
+  height: 270px;
   background: #ffffff;
   border-radius: 14px;
   overflow: hidden;
@@ -10,34 +11,23 @@
   user-select: none;
 }
 
-/* A partir de 768px (celular grande) */
-@media (min-width: 480px) {
+/* A partir de 600px (tablet) */
+@media (min-height: 600px) {
   .containerListBoxEmails {
-    width: 400px;
-    height: 240px;
-  }
-}
-
-/* A partir de 768px (tablet) */
-@media (min-width: 768px) {
-  .containerListBoxEmails {
-    width: 640px;
     height: 310px;
   }
 }
 
-/* A partir de 1024px (notebook) */
-@media (min-width: 1024px) {
+/* A partir de 800px (notebook) */
+@media (min-height: 800px) {
   .containerListBoxEmails {
-    width: 850px;
     height: 414px;
   }
 }
 
-/* A partir de 1440px (monitores grandes) */
-@media (min-width: 1440px) {
+/* A partir de 900px (monitores grandes) */
+@media (min-height: 900px) {
   .containerListBoxEmails {
-    width: 1200px;
     height: 581px;
   }
 }
@@ -46,36 +36,29 @@
   display: flex;
   align-items: center;
   justify-content: space-between;
+  height: 7px;
   padding: 1rem 1.25rem;
-  height: 1px;
   border-bottom: 1px solid rgba(0, 0, 0, 0.06);
   cursor: pointer;
   transition: background 0.2s ease, transform 0.15s ease;
 }
 
-/* A partir de 768px (celular grande) */
-@media (min-width: 480px) {
-  .item {
-    height: -5px;
-  }
-}
-
-/* A partir de 768px (tablet) */
-@media (min-width: 768px) {
+/* A partir de 600px (tablet) */
+@media (min-height: 600px) {
   .item {
     height: 11px;
   }
 }
 
-/* A partir de 1024px (notebook) */
-@media (min-width: 1024px) {
+/* A partir de 800px (notebook) */
+@media (min-height: 800px) {
   .item {
     height: 26px;
   }
 }
 
-/* A partir de 1440px (monitores grandes) */
-@media (min-width: 1440px) {
+/* A partir de 900px (monitor grande) */
+@media (min-height: 900px) {
   .item {
     height: 50px;
   }
