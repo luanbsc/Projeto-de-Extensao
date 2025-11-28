@@ -1,8 +1,7 @@
 .containerListBoxEmails {
   flex-direction: column;
-  width: 100%;
-  max-width: 1200px;
-  height: clamp(500px, 60vh, 720px);
+  width: 300px; /* celular pequeno */
+  height: auto;
   background: #ffffff;
   border-radius: 14px;
   overflow: hidden;
@@ -11,20 +10,81 @@
   user-select: none;
 }
 
+/* A partir de 768px (celular grande) */
+@media (min-width: 480px) {
+  .containerListBoxEmails {
+    width: 400px;
+    height: 240px;
+  }
+}
+
+/* A partir de 768px (tablet) */
+@media (min-width: 768px) {
+  .containerListBoxEmails {
+    width: 640px;
+    height: 310px;
+  }
+}
+
+/* A partir de 1024px (notebook) */
+@media (min-width: 1024px) {
+  .containerListBoxEmails {
+    width: 850px;
+    height: 414px;
+  }
+}
+
+/* A partir de 1440px (monitores grandes) */
+@media (min-width: 1440px) {
+  .containerListBoxEmails {
+    width: 1200px;
+    height: 581px;
+  }
+}
+
 .item {
   display: flex;
   align-items: center;
   justify-content: space-between;
   padding: 1rem 1.25rem;
-  height: clamp(38px, 5.1vh, 70px);
+  height: 1px;
   border-bottom: 1px solid rgba(0, 0, 0, 0.06);
   cursor: pointer;
   transition: background 0.2s ease, transform 0.15s ease;
 }
 
+/* A partir de 768px (celular grande) */
+@media (min-width: 480px) {
+  .item {
+    height: -5px;
+  }
+}
+
+/* A partir de 768px (tablet) */
+@media (min-width: 768px) {
+  .item {
+    height: 11px;
+  }
+}
+
+/* A partir de 1024px (notebook) */
+@media (min-width: 1024px) {
+  .item {
+    height: 26px;
+  }
+}
+
+/* A partir de 1440px (monitores grandes) */
+@media (min-width: 1440px) {
+  .item {
+    height: 50px;
+  }
+}
+
 .emailInfo {
   display: flex;
   align-items: center;
+  max-width: 75%;
   gap: 1rem;
 }
 
@@ -45,16 +105,9 @@
   font-size: 1.05rem;
   font-weight: 600;
   color: #333;
-  max-width: 900px;
   white-space: nowrap;
   overflow: hidden;
   text-overflow: ellipsis;
-}
-
-.emailDate {
-  color: #2563eb;
-  font-weight: 500;
-  font-size: 0.95rem;
 }
 
 .item:hover {
